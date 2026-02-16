@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    background: #f3f4f6;
+    color: #333;
+}
+
+/* Header */
+header {
+    background: #111827;
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+/* Navigation */
+nav {
+    background: #1f2937;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+nav a {
+    color: white;
+    margin: 10px 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #38bdf8;
+}
+
+/* Sections */
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 50px 20px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Skills Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.skills-grid div {
+    background: white;
+    padding: 15px;
+    text-align: center;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Projects */
+.project-card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+/* Footer */
+footer {
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+
+    header {
+        padding: 30px 10px;
+    }
+
+    .container {
+        padding: 30px 15px;
+    }
+
+    nav a {
+        display: block;
+        margin: 8px 0;
+    }
+
+}

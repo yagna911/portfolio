@@ -387,6 +387,18 @@ h2 {
     max-width: 100%;
     border-radius: 8px;
 }
+.github-fallback {
+    background: var(--card-bg);
+    color: var(--muted);
+    padding: 20px 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px var(--shadow);
+    font-size: 0.9rem;
+}
+.github-fallback a {
+    color: var(--accent-dark);
+    font-weight: bold;
+}
 
 /* Contact */
 #contact p {

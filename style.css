@@ -205,19 +205,54 @@ nav a.active-link {
     padding: 50px 20px;
 }
 h2 {
-    margin-bottom: 20px;
+    margin-bottom: 8px;
     text-align: center;
+    position: relative;
+}
+h2::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 3px;
+    margin: 12px auto 20px;
+    transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
+}
+.fade-section.visible h2::after {
+    width: 60px;
 }
 
-/* Scroll fade-in for whole sections */
+/* Eyebrow section numbers */
+.eyebrow {
+    display: block;
+    text-align: center;
+    font-size: 0.72rem;
+    letter-spacing: 4px;
+    font-weight: bold;
+    color: var(--accent);
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    margin-bottom: 6px;
+}
+.fade-section.visible .eyebrow {
+    opacity: 0.85;
+    transform: translateY(0);
+}
+
+/* Scroll reveal system — direction driven by data-anim on the section */
 .fade-section {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
+.fade-section[data-anim="up"]    { transform: translateY(36px); }
+.fade-section[data-anim="left"]  { transform: translateX(-56px); }
+.fade-section[data-anim="right"] { transform: translateX(56px); }
+.fade-section[data-anim="zoom"]  { transform: scale(0.9); }
 .fade-section.visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
 }
 
 /* Staggered items within a section */
@@ -293,15 +328,44 @@ h2 {
     font-size: 0.9rem;
 }
 
-/* Experience */
+/* Experience — animated timeline */
 .exp-card {
+    position: relative;
     background: var(--card-bg);
-    padding: 20px;
+    padding: 20px 20px 20px 28px;
     margin-bottom: 20px;
     border-radius: 8px;
     box-shadow: 0 3px 8px var(--shadow);
-    border-left: 4px solid var(--accent);
     transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease;
+}
+.exp-card::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--accent);
+    border-radius: 4px;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
+}
+.fade-section.visible .exp-card::after {
+    transform: scaleY(1);
+}
+.exp-card::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 24px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 5px rgba(56, 189, 248, 0.18);
+    transform: scale(0);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s;
+}
+.fade-section.visible .exp-card::before {
+    transform: scale(1);
 }
 .exp-card:hover {
     transform: translateX(6px);

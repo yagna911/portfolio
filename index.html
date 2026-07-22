@@ -9,10 +9,16 @@
 <body>
 <div class="scroll-progress" id="scrollProgress"></div>
 
+<button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+
 <header>
-    <img src="profile.jpg" alt="Yagna Yamala" class="profile-photo">
-    <h1>Yagna Yamala</h1>
-    <p>Python Full Stack Developer | Django | React.js</p>
+    <canvas id="particles"></canvas>
+    <div class="header-content">
+        <img src="profile.jpg" alt="Yagna Yamala" class="profile-photo">
+        <h1>Yagna Yamala</h1>
+        <p><span id="typed"></span><span class="type-cursor">|</span></p>
+        <a href="Yagna_Yamala_Resume.pdf" download class="resume-btn">⬇ Download Resume</a>
+    </div>
 </header>
 
 <nav>
@@ -24,6 +30,7 @@
         <a href="#projects">Projects</a>
         <a href="#achievements">Achievements</a>
         <a href="#certifications">Certifications</a>
+        <a href="#github">GitHub</a>
         <a href="#contact">Contact</a>
     </div>
 </nav>
@@ -61,15 +68,35 @@
 
 <section id="skills" class="container fade-section">
     <h2>Skills</h2>
-    <div class="skills-grid">
-        <div class="stagger-item">Python (Advanced)</div>
-        <div class="stagger-item">C (Intermediate)</div>
-        <div class="stagger-item">Java &amp; JavaScript (Novice)</div>
-        <div class="stagger-item">Django &amp; Angular</div>
-        <div class="stagger-item">React.js, HTML &amp; CSS</div>
-        <div class="stagger-item">SQL &amp; MongoDB</div>
-        <div class="stagger-item">Git &amp; GitHub</div>
-        <div class="stagger-item">Teaching &amp; Public Speaking</div>
+    <div class="skill-bars">
+        <div class="skill-bar stagger-item" data-level="90">
+            <div class="skill-label"><span>Python</span><span class="skill-pct">90%</span></div>
+            <div class="skill-track"><div class="skill-fill"></div></div>
+        </div>
+        <div class="skill-bar stagger-item" data-level="75">
+            <div class="skill-label"><span>Django / Angular</span><span class="skill-pct">75%</span></div>
+            <div class="skill-track"><div class="skill-fill"></div></div>
+        </div>
+        <div class="skill-bar stagger-item" data-level="72">
+            <div class="skill-label"><span>React.js / HTML &amp; CSS</span><span class="skill-pct">72%</span></div>
+            <div class="skill-track"><div class="skill-fill"></div></div>
+        </div>
+        <div class="skill-bar stagger-item" data-level="70">
+            <div class="skill-label"><span>SQL &amp; MongoDB</span><span class="skill-pct">70%</span></div>
+            <div class="skill-track"><div class="skill-fill"></div></div>
+        </div>
+        <div class="skill-bar stagger-item" data-level="60">
+            <div class="skill-label"><span>C</span><span class="skill-pct">60%</span></div>
+            <div class="skill-track"><div class="skill-fill"></div></div>
+        </div>
+        <div class="skill-bar stagger-item" data-level="40">
+            <div class="skill-label"><span>Java &amp; JavaScript</span><span class="skill-pct">40%</span></div>
+            <div class="skill-track"><div class="skill-fill"></div></div>
+        </div>
+        <div class="skill-bar stagger-item" data-level="80">
+            <div class="skill-label"><span>Git &amp; GitHub</span><span class="skill-pct">80%</span></div>
+            <div class="skill-track"><div class="skill-fill"></div></div>
+        </div>
     </div>
 </section>
 
@@ -134,12 +161,22 @@
     </div>
 </section>
 
+<section id="github" class="container fade-section">
+    <h2>GitHub Activity</h2>
+    <div class="github-stats">
+        <img src="https://github-readme-stats.vercel.app/api?username=yagna911&show_icons=true&theme=transparent&hide_border=true&title_color=38bdf8&icon_color=38bdf8&text_color=6b7280"
+             alt="Yagna's GitHub stats" loading="lazy" class="stagger-item">
+        <img src="https://github-readme-streak-stats.herokuapp.com/?user=yagna911&theme=transparent&hide_border=true&ring=38bdf8&fire=38bdf8&currStreakLabel=38bdf8"
+             alt="Yagna's GitHub streak" loading="lazy" class="stagger-item">
+    </div>
+</section>
+
 <section id="contact" class="container fade-section">
     <h2>Contact</h2>
     <p>Email: <a href="mailto:yagnayamala@gmail.com">yagnayamala@gmail.com</a></p>
     <p>Phone: <a href="tel:+919703292490">+91 97032 92490</a></p>
     <p>GitHub: <a href="https://github.com/yagna911" target="_blank" rel="noopener">github.com/yagna911</a></p>
-    <p>LinkedIn: <a href="https://https://www.linkedin.com/in/yagna-yamala-817637255/" target="_blank" rel="noopener">linkedin.com/in/yagnayamala</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/yagnayamala-817637255/" target="_blank" rel="noopener">linkedin.com/in/yagnayamala</a></p>
     <p>WorkAtTech: <a href="https://workat.tech/profile/yagna" target="_blank" rel="noopener">workat.tech/profile/yagna</a></p>
     <p>Languages: English, Hindi, Telugu</p>
 </section>
@@ -151,7 +188,112 @@
 <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
 
 <script>
-    // Scroll progress bar
+    /* ---------- Theme toggle ---------- */
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark');
+        themeToggle.textContent = '☀️';
+    }
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+        const isDark = document.body.classList.contains('dark');
+        themeToggle.textContent = isDark ? '☀️' : '🌙';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+
+    /* ---------- Typing effect ---------- */
+    const typedEl = document.getElementById('typed');
+    const phrases = ["Python Full Stack Developer", "Django Developer", "React.js Developer", "ML Enthusiast"];
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduceMotion) {
+        typedEl.textContent = phrases[0];
+    } else {
+        let phraseIndex = 0, charIndex = 0, deleting = false;
+        function typeLoop() {
+            const current = phrases[phraseIndex];
+            if (!deleting) {
+                charIndex++;
+                typedEl.textContent = current.slice(0, charIndex);
+                if (charIndex === current.length) {
+                    deleting = true;
+                    setTimeout(typeLoop, 1400);
+                    return;
+                }
+            } else {
+                charIndex--;
+                typedEl.textContent = current.slice(0, charIndex);
+                if (charIndex === 0) {
+                    deleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                }
+            }
+            setTimeout(typeLoop, deleting ? 40 : 80);
+        }
+        typeLoop();
+    }
+
+    /* ---------- Particle background ---------- */
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    function initParticles() {
+        particles = [];
+        const count = Math.min(60, Math.floor(canvas.width / 20));
+        for (let i = 0; i < count; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                r: Math.random() * 1.8 + 0.6,
+                vx: (Math.random() - 0.5) * 0.3,
+                vy: (Math.random() - 0.5) * 0.3
+            });
+        }
+    }
+    initParticles();
+    window.addEventListener('resize', initParticles);
+
+    function drawParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.5)';
+        particles.forEach(p => {
+            p.x += p.vx;
+            p.y += p.vy;
+            if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+            if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fill();
+        });
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 110) {
+                    ctx.strokeStyle = `rgba(56, 189, 248, ${0.15 * (1 - dist / 110)})`;
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.stroke();
+                }
+            }
+        }
+        if (!reduceMotion) requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
+
+    /* ---------- Scroll progress bar ---------- */
     const progressBar = document.getElementById('scrollProgress');
     window.addEventListener('scroll', () => {
         const scrollTop = window.scrollY;
@@ -163,7 +305,7 @@
         backToTop.classList.toggle('show', scrollTop > 400);
     });
 
-    // Fade sections in on scroll
+    /* ---------- Fade sections in on scroll ---------- */
     const sections = document.querySelectorAll('.fade-section');
     const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -175,16 +317,28 @@
     }, { threshold: 0.15 });
     sections.forEach(sec => sectionObserver.observe(sec));
 
-    // Stagger items inside each section once visible
-    const staggerGroups = document.querySelectorAll('.fade-section');
-    staggerGroups.forEach(group => {
+    /* ---------- Stagger items ---------- */
+    sections.forEach(group => {
         const items = group.querySelectorAll('.stagger-item');
         items.forEach((item, i) => {
             item.style.transitionDelay = (i * 90) + 'ms';
         });
     });
 
-    // Active nav link highlight
+    /* ---------- Animate skill bars when visible ---------- */
+    const skillBars = document.querySelectorAll('.skill-bar');
+    const skillObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const fill = entry.target.querySelector('.skill-fill');
+                fill.style.width = entry.target.dataset.level + '%';
+                skillObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.4 });
+    skillBars.forEach(bar => skillObserver.observe(bar));
+
+    /* ---------- Active nav link highlight ---------- */
     const navLinks = document.querySelectorAll('nav a');
     const navObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -197,7 +351,7 @@
     }, { rootMargin: '-45% 0px -50% 0px' });
     document.querySelectorAll('section[id]').forEach(sec => navObserver.observe(sec));
 
-    // Back to top
+    /* ---------- Back to top ---------- */
     document.getElementById('backToTop').addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });

@@ -35,7 +35,8 @@
     </div>
 </nav>
 
-<section id="about" class="container fade-section">
+<section id="about" class="container fade-section" data-anim="up">
+    <span class="eyebrow">01</span>
     <h2>About Me</h2>
     <p>
         I am a final-year B.Tech CSE student passionate about building full-stack applications
@@ -45,7 +46,8 @@
     </p>
 </section>
 
-<section id="education" class="container fade-section">
+<section id="education" class="container fade-section" data-anim="left">
+    <span class="eyebrow">02</span>
     <h2>Education</h2>
     <div class="edu-grid">
         <div class="edu-card stagger-item">
@@ -66,7 +68,8 @@
     </div>
 </section>
 
-<section id="skills" class="container fade-section">
+<section id="skills" class="container fade-section" data-anim="right">
+    <span class="eyebrow">03</span>
     <h2>Skills</h2>
     <div class="skill-bars">
         <div class="skill-bar stagger-item" data-level="90">
@@ -100,7 +103,8 @@
     </div>
 </section>
 
-<section id="experience" class="container fade-section">
+<section id="experience" class="container fade-section" data-anim="up">
+    <span class="eyebrow">04</span>
     <h2>Experience</h2>
 
     <div class="exp-card stagger-item">
@@ -129,7 +133,8 @@
     </div>
 </section>
 
-<section id="projects" class="container fade-section">
+<section id="projects" class="container fade-section" data-anim="zoom">
+    <span class="eyebrow">05</span>
     <h2>Projects</h2>
     <div class="project-card stagger-item">
         <h3>Retail Store Inventory &amp; POS Checkout App</h3>
@@ -141,7 +146,8 @@
     </div>
 </section>
 
-<section id="achievements" class="container fade-section">
+<section id="achievements" class="container fade-section" data-anim="left">
+    <span class="eyebrow">06</span>
     <h2>Achievements</h2>
     <div class="badge-grid">
         <div class="badge-card stagger-item">NCC B Certificate — 10A Naval Unit</div>
@@ -150,7 +156,8 @@
     </div>
 </section>
 
-<section id="certifications" class="container fade-section">
+<section id="certifications" class="container fade-section" data-anim="right">
+    <span class="eyebrow">07</span>
     <h2>Certifications</h2>
     <div class="badge-grid">
         <div class="badge-card stagger-item"><span class="yr">2026</span> AWS Cloud Internship — Vaarada</div>
@@ -161,19 +168,21 @@
     </div>
 </section>
 
-<section id="github" class="container fade-section">
+<section id="github" class="container fade-section" data-anim="up">
+    <span class="eyebrow">08</span>
     <h2>GitHub Activity</h2>
     <div class="github-stats">
         <img src="https://github-readme-stats.vercel.app/api?username=yagna911&show_icons=true&theme=transparent&hide_border=true&title_color=38bdf8&icon_color=38bdf8&text_color=6b7280"
              alt="Yagna's GitHub stats" loading="lazy" class="stagger-item"
-             onerror="this.replaceWith(Object.assign(document.createElement('p'), {className:'github-fallback', textContent:'GitHub stats are temporarily unavailable — view live at github.com/yagna911'}))">
+             onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='https://github-readme-stats-git-master-rickstaa.vercel.app/api?username=yagna911&show_icons=true&theme=transparent&hide_border=true&title_color=38bdf8&icon_color=38bdf8&text_color=6b7280';}else{this.replaceWith(Object.assign(document.createElement('p'),{className:'github-fallback',innerHTML:'GitHub stats are temporarily unavailable (the public stats service is currently overloaded) — view live at <a href=&quot;https://github.com/yagna911&quot; target=&quot;_blank&quot;>github.com/yagna911</a>'}));}">
         <img src="https://streak-stats.demolab.com?user=yagna911&theme=transparent&hide_border=true&ring=38bdf8&fire=38bdf8&currStreakLabelColor=38bdf8"
              alt="Yagna's GitHub streak" loading="lazy" class="stagger-item"
-             onerror="this.replaceWith(Object.assign(document.createElement('p'), {className:'github-fallback', textContent:'Streak stats are temporarily unavailable — view live at github.com/yagna911'}))">
+             onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='https://github-readme-streak-stats-eight.vercel.app?user=yagna911&theme=transparent&hide_border=true&ring=38bdf8&fire=38bdf8&currStreakLabelColor=38bdf8';}else{this.replaceWith(Object.assign(document.createElement('p'),{className:'github-fallback',innerHTML:'Streak stats are temporarily unavailable (the public stats service is currently overloaded) — view live at <a href=&quot;https://github.com/yagna911&quot; target=&quot;_blank&quot;>github.com/yagna911</a>'}));}">
     </div>
 </section>
 
-<section id="contact" class="container fade-section">
+<section id="contact" class="container fade-section" data-anim="zoom">
+    <span class="eyebrow">09</span>
     <h2>Contact</h2>
     <p>Email: <a href="mailto:yagnayamala@gmail.com">yagnayamala@gmail.com</a></p>
     <p>Phone: <a href="tel:+919703292490">+91 97032 92490</a></p>
